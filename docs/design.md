@@ -1,6 +1,6 @@
 # Design
 
-The site follows the Aiviarium identity. The icons, wordmarks and lockups are in the [brand folder](https://github.com/aiviarium/.github/tree/main/brand). The badges come from the [badge endpoint](https://github.com/aiviarium/badges). Where the identity has no rule, the site takes the sizes of Nocturne, the design system of Crow.
+The site follows the Aiviarium identity. The icons, wordmarks and lockups are in the [brand folder](https://github.com/aiviarium/.github/tree/main/brand). The badges come from the [badge endpoint](https://github.com/aiviarium/badges). Where the identity has no rule, the site takes the sizes of Nocturne.
 
 The theme is in `src/app/global.css`, as CSS variables over the Fumadocs UI theme. A project site changes `docs.config.ts` and `public/brand/`, not the theme.
 
@@ -46,7 +46,7 @@ They are dark in both themes. The `Badge` component draws them, and the header c
 
 ## Controls
 
-Controls follow Nocturne, the design system of Crow (`crow-src/ui/src/styles`: `tokens.css`, `bundle.css`, `extra.css`). Buttons have neutral grey fills and no outline.
+Controls follow Nocturne. Buttons have neutral grey fills and no outline.
 
 | Size | Height | Use |
 | --- | --- | --- |

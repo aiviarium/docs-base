@@ -14,7 +14,7 @@ This repository is the starting point for the documentation site of each Aiviari
 | `src/components/` | The lockup, wordmark, badge and MDX components |
 | `src/lib/` | The content source, the Markdown output, the code colours and helpers |
 | `scripts/check-links.ts` | The link check |
-| `scripts/screens.py` | Screenshots of the built site into `screens/` |
+| `scripts/screens.py` | Screenshots of the built site into `screens/`, which is ignored and never committed |
 | `docs/design.md` | The design rules |
 
 ## Build and check

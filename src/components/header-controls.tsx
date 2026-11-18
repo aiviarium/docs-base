@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import { Moon, Search, Sun } from 'lucide-react';
 import { useSyncExternalStore } from 'react';
 
-// Header controls in Nocturne's treatments (crow-src/ui/src/styles/bundle.css):
+// Header controls in Nocturne's treatments:
 // the search field is `.nc-search`, the search button an `.nc-icon-btn`, and
 // the theme switch an `.nc-seg`. All are one control height, 28 px.
 

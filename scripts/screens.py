@@ -1,7 +1,7 @@
 """Screenshots of the built site, for review.
 
 Serves out/ on a local port and saves the landing page and one docs page in
-dark and light, at desktop and phone width, to screens/.
+dark and light, at desktop and phone width, to screens/, which git ignores.
 
     npm run build
     python3 scripts/screens.py
