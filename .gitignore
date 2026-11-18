@@ -6,4 +6,4 @@ out/
 next-env.d.ts
 
 # Local screenshots, never committed
-screens/
+/screens/
