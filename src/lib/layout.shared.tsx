@@ -1,6 +1,7 @@
 import type { BaseLayoutProps, LinkItemType } from 'fumadocs-ui/layouts/shared';
 import { Badge } from '@/components/badge';
 import { NavLockup } from '@/components/brand';
+import { SearchButton, SearchField, ThemeToggle } from '@/components/header-controls';
 import { config, isExternal } from '@/lib/site';
 
 const navLinks: LinkItemType[] = config.nav.map((link) => ({
@@ -23,6 +24,11 @@ export function baseOptions(): BaseLayoutProps {
           ) : null}
         </>
       ),
+    },
+    // Header controls in Nocturne's treatments, one control height.
+    slots: {
+      themeSwitch: ThemeToggle,
+      searchTrigger: { sm: SearchButton, full: SearchField },
     },
     links: [
       ...navLinks,

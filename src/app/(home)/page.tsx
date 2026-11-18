@@ -5,7 +5,8 @@ import { config, endpointBadges, isExternal } from '@/lib/site';
 
 function Action({ text, url, primary }: { text: string; url: string; primary?: boolean }) {
   const external = isExternal(url);
-  const className = primary ? 'button button-primary' : 'button';
+  // Nocturne's large buttons: the one primary action filled with the text colour, the other a neutral fill.
+  const className = primary ? 'nc-btn nc-btn--lg nc-btn--primary' : 'nc-btn nc-btn--lg';
   return external ? (
     <a href={url} className={className} rel="noreferrer noopener" target="_blank">
       {text} ↗

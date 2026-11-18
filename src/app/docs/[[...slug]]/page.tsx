@@ -26,8 +26,12 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
       <div className="flex flex-row flex-wrap items-center gap-2 border-b pb-6">
-        <MarkdownCopyButton markdownUrl={markdownUrl(page)} />
-        <ViewOptionsPopover markdownUrl={markdownUrl(page)} githubUrl={editUrl(page.path)} />
+        <MarkdownCopyButton markdownUrl={markdownUrl(page)} className="nc-btn" />
+        <ViewOptionsPopover
+          markdownUrl={markdownUrl(page)}
+          githubUrl={editUrl(page.path)}
+          className="nc-btn"
+        />
       </div>
       <DocsBody>
         {/* Links between pages can be written as file names, such as ./deploying.mdx. */}

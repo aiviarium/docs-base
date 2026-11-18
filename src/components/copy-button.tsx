@@ -8,7 +8,7 @@ export function CopyButton({ text }: { text: string }) {
   return (
     <button
       type="button"
-      className="copy-button"
+      className="nc-btn nc-btn--icon"
       aria-label={copied ? 'Copied' : 'Copy command'}
       title={copied ? 'Copied' : 'Copy'}
       onClick={() => {

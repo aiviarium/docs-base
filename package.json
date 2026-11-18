@@ -15,11 +15,13 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@base-ui/react": "^1.9.0",
     "fumadocs-core": "16.19.4",
     "fumadocs-mdx": "15.6.3",
     "fumadocs-ui": "npm:@fumadocs/base-ui@^16.19.4",
     "lucide-react": "^1.74.0",
     "next": "16.4.6",
+    "next-themes": "^0.4.6",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "shiki": "^4.6.0"
