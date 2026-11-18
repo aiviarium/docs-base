@@ -36,6 +36,7 @@ npm run build       # writes out/; DOCS_BASE_PATH=/name for a site in a folder
 - Next.js 16 and Fumadocs 16 differ from older versions. Read `node_modules/next/dist/docs/` and the types in `node_modules/fumadocs-*` before changing routes or layouts.
 - The site is a static export. Route handlers export `dynamic = 'force-static'`. Plain URLs to files in `public/` go through `asset()` so they get the base path.
 - Keep project values in `docs.config.ts`. Code reads them from there.
+- npm package names use the `@aiviarium` scope, such as `@aiviarium/rookery-docs`.
 - Follow `docs/design.md`. The project colour never fills a panel, card, button or callout. Only the value of a badge is filled with it.
 - Prose is short, plain sentences, with project names in title case. It has to pass Vale with no output.
 - Commits follow Conventional Commits with a short subject.
