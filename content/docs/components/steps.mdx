@@ -1,0 +1,60 @@
+---
+title: Steps
+description: A numbered procedure.
+icon: ListOrdered
+---
+
+Steps number a procedure.
+Each step starts with a heading, which also appears in the table of contents.
+
+<Steps>
+<Step>
+
+### Install the packages
+
+```bash
+npm install
+```
+
+</Step>
+<Step>
+
+### Start the site
+
+```bash
+npm run dev
+```
+
+</Step>
+<Step>
+
+### Open the page
+
+Open `http://localhost:3000` in a browser.
+
+</Step>
+</Steps>
+
+## MDX
+
+````mdx
+<Steps>
+<Step>
+
+### Install the packages
+
+```bash
+npm install
+```
+
+</Step>
+<Step>
+
+### Start the site
+
+</Step>
+</Steps>
+````
+
+Leave a blank line after `<Step>` and before `</Step>`.
+Without it, the Markdown inside the step is not parsed.

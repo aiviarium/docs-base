@@ -1,0 +1,41 @@
+---
+title: Callouts
+description: Notes, warnings and errors beside the text.
+icon: MessageSquare
+---
+
+A callout sets a short note apart from the text around it.
+Its type sets the icon and the colour of the bar.
+
+<Callout>A plain note. Use it for a detail the reader can skip.</Callout>
+
+<Callout type="warn" title="Warning">
+  Use a warning for a step that can lose data or break a build.
+</Callout>
+
+<Callout type="error" title="Error">Use an error for something that does not work.</Callout>
+
+<Callout type="success" title="Success">Use a success note to show the expected result.</Callout>
+
+## MDX
+
+```mdx
+<Callout>A plain note.</Callout>
+
+<Callout type="warn" title="Warning">
+  Use a warning for a step that can lose data or break a build.
+</Callout>
+```
+
+## Types
+
+| `type` | Use |
+| --- | --- |
+| `info` | The default. A side note |
+| `warn` | A risk, or a step that is easy to get wrong |
+| `error` | A known failure |
+| `success` | The result of a step |
+| `idea` | A tip |
+
+The background of a callout is grey in every type.
+Only the bar and the icon take the status colour.

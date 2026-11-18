@@ -1,0 +1,64 @@
+---
+title: Writing pages
+description: Pages, the sidebar, links and the Markdown copies.
+icon: PenLine
+---
+
+## Pages
+
+Each `.mdx` file in `content/docs/` is a page.
+The path of the file is the URL: `content/docs/components/tabs.mdx` is served at `/docs/components/tabs/`.
+An `index.mdx` is the page of its folder.
+
+Each page starts with front matter:
+
+```mdx title="content/docs/example.mdx"
+---
+title: Example
+description: One sentence about the page.
+icon: Book
+---
+
+The first paragraph.
+```
+
+The `icon` names an icon from [Lucide](https://lucide.dev/icons).
+
+## The sidebar
+
+A `meta.json` in a folder sets the order of its pages.
+A name between three dashes adds a separator, and `...folder` places the pages of a folder inline.
+
+```json title="content/docs/meta.json"
+{
+  "title": "Guide",
+  "pages": ["index", "configuration", "---Publishing---", "deploying"]
+}
+```
+
+## Links
+
+Link to another page by its file name, relative to the current file.
+The site turns the file name into the URL of the page, and `npm run links` checks that the target exists.
+
+```mdx
+See [Configuration](./configuration.mdx) for each field.
+See [the base path](./configuration.mdx#the-base-path) for sites in a folder.
+```
+
+## Markdown copies
+
+Each page is also built as a Markdown file, for tools that read text.
+The page header has a button that copies it.
+
+| File | Holds |
+| --- | --- |
+| `/llms.txt` | The list of pages, each linked to its Markdown file |
+| `/llms-full.txt` | Every page in one file |
+| `/md/<page>.md` | One page, such as `/md/components/tabs.md` |
+
+## Style
+
+Write short, plain sentences.
+Use the project names in title case, and lowercase only in slugs, URLs, packages and commands.
+`npm run vale` checks the prose against the rules of the organisation.

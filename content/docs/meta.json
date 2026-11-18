@@ -1,0 +1,4 @@
+{
+  "title": "Guide",
+  "pages": ["index", "configuration", "writing", "components", "deploying"]
+}

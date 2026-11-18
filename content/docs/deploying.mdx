@@ -1,0 +1,119 @@
+---
+title: Deploying
+description: Publish the static site to GitHub Pages or Cloudflare.
+icon: Upload
+---
+
+`npm run build` writes the whole site to `out/`.
+The folder holds HTML, CSS, JavaScript, the search index and the Markdown files.
+Any host that serves static files can serve it.
+
+## The base path
+
+Set `DOCS_BASE_PATH` when the site is served from a folder rather than the root of a domain.
+
+| Address | `DOCS_BASE_PATH` |
+| --- | --- |
+| `https://aiviarium.github.io/hatchery/` | `/hatchery` |
+| `https://hatchery.example.org/` | unset |
+| `https://docs.example.org/hatchery/` | `/hatchery` |
+
+## GitHub Pages
+
+A project site on GitHub Pages is served from a folder named after the repository.
+This workflow builds the site and publishes it on each push to `main`.
+
+```yaml title=".github/workflows/pages.yml"
+name: Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          DOCS_BASE_PATH: /${{ github.event.repository.name }}
+      - run: touch out/.nojekyll
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: out
+      - id: deployment
+        uses: actions/deploy-pages@v4
+```
+
+<Steps>
+<Step>
+
+### Turn on Pages
+
+In the repository settings, open **Pages** and set the source to **GitHub Actions**.
+
+</Step>
+<Step>
+
+### Add the workflow
+
+Save the file above as `.github/workflows/pages.yml` and push it.
+
+</Step>
+</Steps>
+
+<Callout type="warn" title="Keep .nojekyll">
+  Without `out/.nojekyll`, GitHub Pages skips the `_next` folder and the pages load without styles.
+</Callout>
+
+`fetch-depth: 0` fetches the full history, so the "Last updated" dates are right.
+
+## Cloudflare
+
+Cloudflare serves the site from the root of its own domain, so leave `DOCS_BASE_PATH` unset.
+
+<Tabs items={['Dashboard', 'Wrangler']}>
+  <Tab value="Dashboard">
+    In the Cloudflare dashboard, open **Workers & Pages**, create a Pages project and connect the repository.
+    Use these build settings:
+
+    | Setting | Value |
+    | --- | --- |
+    | Build command | `npm run build` |
+    | Output folder | `out` |
+    | Node.js version | `22`, set with the `NODE_VERSION` variable |
+
+  </Tab>
+  <Tab value="Wrangler">
+    Build on your machine or in CI, then upload `out/` with Wrangler:
+
+    ```bash
+    npm run build
+    npx wrangler pages deploy out --project-name hatchery-docs
+    ```
+
+  </Tab>
+</Tabs>
+
+The site uses trailing slashes, so `/docs/deploying/` is served from `out/docs/deploying/index.html`.
+Both hosts handle this without extra rules.

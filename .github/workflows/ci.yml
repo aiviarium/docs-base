@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # The full history gives each page its "Last updated" date.
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run links
+      - name: Vale
+        run: |
+          curl -sSfL https://github.com/errata-ai/vale/releases/download/v3.25.1/vale_3.25.1_Linux_64-bit.tar.gz | tar -xz -C "$RUNNER_TEMP" vale
+          export PATH="$RUNNER_TEMP:$PATH"
+          out=$(npm run --silent vale)
+          if [ -n "$out" ]; then echo "$out"; exit 1; fi
+      - run: npm run build
+      - name: Build with a base path
+        run: npm run build
+        env:
+          DOCS_BASE_PATH: /docs-base

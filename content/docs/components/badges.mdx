@@ -1,0 +1,50 @@
+---
+title: Badges
+description: Small labels in the style of the organisation's badges.
+icon: Tag
+---
+
+A badge marks a kind, a version or a state in a few words.
+It looks like the badges the badge endpoint draws for the README files.
+
+<Badge label="state" value="in development" /> <Badge label="version" value="v0.1" /> <Badge label="Aiviarium" />
+
+## MDX
+
+```mdx
+<Badge label="state" value="in development" />
+<Badge label="version" value="v0.1" icon={false} />
+<Badge label="Aiviarium" />
+```
+
+| Prop | Use |
+| --- | --- |
+| `label` | The text on the dark field |
+| `value` | The text on the project colour. Without it, the label takes the colour |
+| `icon` | Shows the project icon at the left. On by default |
+
+## The style
+
+| Part | Value |
+| --- | --- |
+| Height | 22 px |
+| Radius | 5 px |
+| Field | `#18181B` with a 1 px `#2A2A30` outline |
+| Label | Inter 600, `#EDEDEF` |
+| Value | Inter 650, `#0A0A0B` on the project colour |
+
+A badge is dark in both themes, like the images from the endpoint.
+It is the one place where the project colour fills an area.
+
+## Badges as images
+
+The badges on the landing page are images from the endpoint at `aiviarium-badges.helight.workers.dev`.
+They are built from `slug`, `repo` and `badges` in `docs.config.ts`.
+Use the same addresses in the README:
+
+```md
+[![Hatchery](https://aiviarium-badges.helight.workers.dev/hatchery?facet)](https://github.com/aiviarium/hatchery)
+[![CI](https://aiviarium-badges.helight.workers.dev/hatchery/github/actions/workflow/status/aiviarium/hatchery/ci.yml?label=CI)](https://github.com/aiviarium/hatchery/actions/workflows/ci.yml)
+```
+
+See the [badges repository](https://github.com/aiviarium/badges) for every address.

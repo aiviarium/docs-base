@@ -1,0 +1,74 @@
+---
+title: Tabs
+description: Alternatives, such as one command per package manager.
+icon: PanelTop
+---
+
+Tabs hold versions of the same content.
+The reader picks one, and the page shows only that one.
+
+<Tabs items={['npm', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npm install
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm install
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bun install
+    ```
+  </Tab>
+</Tabs>
+
+## MDX
+
+````mdx
+<Tabs items={['npm', 'pnpm', 'bun']}>
+  <Tab value="npm">
+    ```bash
+    npm install
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm install
+    ```
+  </Tab>
+</Tabs>
+````
+
+## Remembering the choice
+
+Give tabs a `groupId` to share the choice across the page.
+Add `persist` to keep it across visits.
+
+```mdx
+<Tabs groupId="package-manager" persist items={['npm', 'pnpm']}>
+```
+
+## Code block tabs
+
+Code blocks with a `tab` attribute next to each other become one block with tabs:
+
+````mdx
+```bash tab="Linux"
+./install.sh
+```
+
+```powershell tab="Windows"
+.\install.ps1
+```
+````
+
+```bash tab="Linux"
+./install.sh
+```
+
+```powershell tab="Windows"
+.\install.ps1
+```

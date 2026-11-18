@@ -1,0 +1,25 @@
+---
+title: Cards
+description: Links to other pages, in a grid.
+icon: LayoutGrid
+---
+
+Cards link to other pages.
+They have a raised grey background and a 1 px border, in two columns on wide screens.
+
+<Cards>
+  <Card title="Getting started" href="../index.mdx" description="Copy the base and start a site." />
+  <Card title="Deploying" href="../deploying.mdx" description="Publish to GitHub Pages or Cloudflare." />
+</Cards>
+
+## MDX
+
+```mdx
+<Cards>
+  <Card title="Getting started" href="../index.mdx" description="Copy the base and start a site." />
+  <Card title="Deploying" href="../deploying.mdx" description="Publish to GitHub Pages or Cloudflare." />
+</Cards>
+```
+
+A card without `href` is a plain box.
+The landing page has its own cards, set by `features` in `docs.config.ts`.

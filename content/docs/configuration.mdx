@@ -1,0 +1,49 @@
+---
+title: Configuration
+description: The fields of docs.config.ts.
+icon: Settings
+---
+
+Everything that differs between projects is in `docs.config.ts`, at the root of the repository.
+The file is typed, so `npm run typecheck` reports a missing or misspelled field.
+
+## Fields
+
+| Field | Example | Use |
+| --- | --- | --- |
+| `name` | `Hatchery` | The name in title case, in titles and alt text |
+| `slug` | `hatchery` | The lowercase name, for URLs and commands |
+| `description` | One sentence | Under the wordmark and in the page metadata |
+| `area` | `Plugin distribution` | The label above the wordmark: "Aiviarium / Plugin distribution" |
+| `colour.dark` | `#E879F9` | The project colour on dark |
+| `colour.light` | `#A21CAF` | The project colour on white |
+| `repo` | `https://github.com/aiviarium/hatchery` | The GitHub link and the edit links |
+| `repoDocsPath` | `docs/content/docs` | Where the pages are in the repository |
+| `badge` | `v0.1` | A short badge beside the name in the header |
+| `install` | A label and a command | The install block on the landing page |
+| `actions` | A pair of links | The buttons on the landing page |
+| `assets` | Paths in `public/` | The icons and wordmarks |
+| `nav` | A list of links | The links in the header |
+| `features` | A list of cards | The cards on the landing page, or an empty list |
+
+## The project colour
+
+The site reads the two colours into one CSS variable, `--brand`.
+The dark tone is used on the dark theme, and the light tone on the light theme.
+The light tone is darker, so text in it passes 4.5:1 on white.
+
+The colour marks text, links, 1 px borders and small markers.
+The primary button has a border and text in the colour.
+Panels, cards, buttons, badges, callouts, code blocks and table cells stay grey.
+Keep to this rule when you add your own components.
+
+## The base path
+
+A site served from a folder, such as `https://aiviarium.github.io/hatchery/`, needs the folder name at build time:
+
+```bash
+DOCS_BASE_PATH=/hatchery npm run build
+```
+
+Links, the search index and the Markdown files then include the folder.
+Leave the variable unset for a site at the root of a domain.

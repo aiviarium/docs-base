@@ -1,0 +1,94 @@
+---
+title: Getting started
+description: Start a documentation site for a project from this base.
+icon: Rocket
+---
+
+This repository is the starting point for the documentation site of each Aiviarium project.
+A project copies it, edits one file and replaces the brand files.
+The pages, the theme and the build stay the same.
+
+## What you need
+
+- Node.js 22 or newer, with npm.
+- Git. The "Last updated" date on each page comes from the git history.
+- The brand files of your project, from the `brand/` folder of the `.github` repository.
+
+## Start a site
+
+<Steps>
+<Step>
+
+### Copy the base
+
+Clone the base into a new folder and start a fresh history.
+
+```bash
+git clone https://github.com/aiviarium/docs-base hatchery-docs
+cd hatchery-docs
+rm -rf .git && git init -b main
+npm install
+```
+
+You can also copy the files into a `docs/` folder of the project repository.
+
+</Step>
+<Step>
+
+### Edit the config
+
+Open `docs.config.ts` and change the values.
+The file lists every setting with a comment, and ends with a full example for Hatchery.
+See [Configuration](./configuration.mdx) for each field.
+
+</Step>
+<Step>
+
+### Replace the assets
+
+Put the files of your project into `public/brand/` and delete the Aiviarium files.
+The site needs nine files:
+
+| File | Use |
+| --- | --- |
+| `<name>.svg`, `<name>-light.svg` | The detailed icon on the landing page, at 128 px |
+| `<name>-icon.svg`, `<name>-icon-light.svg` | The icon in the header, at 27 px |
+| `<name>-16.svg`, `<name>-16-light.svg` | The favicon |
+| `<name>-wordmark.svg`, `<name>-wordmark-light.svg` | The faceted wordmark on the landing page |
+| `<name>-wordmark-mono.svg` | The plain wordmark in the header |
+
+The wordmarks are in `brand/wordmarks/` and are named `<name>.svg` there.
+Rename them as you copy them, or point the config at the names you keep.
+
+</Step>
+<Step>
+
+### Write pages
+
+Pages are MDX files in `content/docs/`.
+Delete the sample pages, or keep the component pages as a reference while you write.
+See [Writing pages](./writing.mdx).
+
+</Step>
+</Steps>
+
+## Run it
+
+```bash
+npm run dev
+```
+
+The site runs at `http://localhost:3000`.
+To check the static build, run `npm run build` and then `npm start`, which serves `out/`.
+
+## Checks
+
+| Command | What it checks |
+| --- | --- |
+| `npm run typecheck` | The TypeScript code and the generated content types |
+| `npm run lint` | ESLint over the code |
+| `npm run links` | Links between pages, including headings |
+| `npm run vale` | The prose rules of the organisation |
+| `npm run build` | The static export |
+
+CI runs all of them on each push and pull request.

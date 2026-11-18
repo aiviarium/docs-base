@@ -1,0 +1,51 @@
+---
+title: Code blocks
+description: Highlighted code with titles, line marks and tabs.
+icon: Code
+---
+
+Fenced code blocks are highlighted at build time.
+The colours are chosen for the grey surfaces of the site, in both themes.
+
+```ts title="docs.config.ts"
+const config: DocsConfig = {
+  name: 'Hatchery',
+  slug: 'hatchery',
+  // The project colour on dark and on white.
+  colour: { dark: '#E879F9', light: '#A21CAF' },
+};
+
+export default config;
+```
+
+## Titles
+
+Add `title="..."` after the language to show a file name above the code.
+
+````mdx
+```ts title="docs.config.ts"
+const config = {};
+```
+````
+
+## Marking lines
+
+A comment such as `// [!code highlight]` marks a line.
+`// [!code ++]` and `// [!code --]` show added and removed lines.
+
+```ts
+const colour = { dark: '#E879F9', light: '#A21CAF' }; // [!code highlight]
+const old = '#3FCF8E'; // [!code --]
+const updated = '#E879F9'; // [!code ++]
+```
+
+## Shell
+
+```bash
+npm run build
+DOCS_BASE_PATH=/hatchery npm run build
+```
+
+## Inline code
+
+Inline code, such as `npm run dev`, uses the same monospace font as the blocks.
