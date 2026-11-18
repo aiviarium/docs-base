@@ -44,10 +44,6 @@ export default function HomePage() {
           </div>
           <ThemedImg src={config.assets.icon} alt="" width={128} height={128} className="hero-icon" />
         </div>
-        <div className="actions">
-          <Action {...primary} primary />
-          <Action {...secondary} />
-        </div>
         <div className="install">
           <small>{config.install.label}</small>
           <div className="install-line">
@@ -59,6 +55,10 @@ export default function HomePage() {
             </code>
             <CopyButton text={config.install.command} />
           </div>
+        </div>
+        <div className="actions">
+          <Action {...primary} primary />
+          <Action {...secondary} />
         </div>
         {config.features.length > 0 && (
           <div className="cards">
