@@ -30,9 +30,8 @@ export interface EndpointBadge {
 export function endpointBadges(): EndpointBadge[] {
   const { host, ci, release } = config.badges;
   const base = `${host}/${config.slug}`;
-  const list: EndpointBadge[] = [
-    { alt: config.name, src: `${base}?facet`, href: config.repo },
-  ];
+  // The wordmark above already names the project, so the badges carry state only.
+  const list: EndpointBadge[] = [];
   if (ci) {
     list.push({
       alt: 'CI',

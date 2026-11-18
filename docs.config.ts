@@ -48,7 +48,7 @@ export interface DocsConfig {
   chip?: { label: string; value: string };
   /**
    * Badges from the organisation's badge endpoint, shown on the landing page and
-   * in the README. The family badge (the project's name) is always first.
+   * in the README.
    */
   badges: {
     /** The badge endpoint. */

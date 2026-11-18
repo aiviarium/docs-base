@@ -1,6 +1,5 @@
 # Docs base
 
-[![Aiviarium](https://aiviarium-badges.helight.workers.dev/aiviarium?facet)](https://github.com/aiviarium)
 [![CI](https://aiviarium-badges.helight.workers.dev/aiviarium/github/actions/workflow/status/aiviarium/docs-base/ci.yml?label=CI)](https://github.com/aiviarium/docs-base/actions/workflows/ci.yml)
 
 The starting point for the documentation site of each Aiviarium project. It is a static site built with Fumadocs and Next.js. The build writes plain files to `out/` for GitHub Pages, Cloudflare or any static host.
